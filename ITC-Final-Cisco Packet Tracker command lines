@@ -1,9 +1,9 @@
-* Johannesburg LAN
+Johannesburg LAN
 172.25.0.0 /23 (255.255.254.0)
 172.25.0.1
 172.25.1.254 Dg
 
-* SW-JOH
+SW-JOH
 en
 config t 
 hostname SW-JOH
@@ -22,7 +22,7 @@ service password-encryption
 
 enable secret EXAM
 
-* RTR-Johannesburg
+RTR-Johannesburg
 en
 config t
 hostname RTR-Johannesburg
@@ -31,7 +31,7 @@ ip address 172.25.1.254 255.255.254.0
 no shutdown
 exit
 
-* WAN
+WAN
 interface g0/1
 ip address 10.10.10.1 255.255.255.252
 no shutdown
@@ -40,17 +40,17 @@ exit
 !GOLR
 ip route 0.0.0.0 0.0.0 10.10.10.2
 
-** Durban
+Durban
 172.25.2.0 /23 (255.255.254.0)
 172.25.2.0
 172.25.3.254 -Dg
 
-* SW-DUR
+SW-DUR
 en
 config t
 hostname SW-DUR
 
-* RTR-Durban
+RTR-Durban
 en
 config t
 hostname RTR-Durban
@@ -59,7 +59,7 @@ ip address 172.25.3.254 255.255.254.0
 no shutdown
 exit
 
-* WAN
+WAN
 interface g0/1
 ip address 10.10.10.2 255.255.255.252
 no shutdown
@@ -76,12 +76,12 @@ ip route 0.0.0.0 0.0.0.0 10.10.10.6
 Static route
 ip route 172.25.0.0 255.255.254.0 10.10.10.1
 
-** RTR-CapeTown
+RTR-CapeTown
 en
 config t
 hostname RTR-CapeTown
 
-* WAN
+WAN
 interface g0/0
 ip address 10.10.10.6 255.255.255.252
 no shutdown
