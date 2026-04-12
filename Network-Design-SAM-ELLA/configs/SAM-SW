@@ -1,0 +1,24 @@
+SAM-SW
+=====================
+en
+conf t
+hostname SAM-SW
+
+!configure SVI
+int vlan1
+ip address 172.23.16.100 255.255.255.0
+no shut
+exit
+
+!Configure console and VTY passwords
+line con 0
+password admin
+login
+exit
+line vty 0 15
+password cisco
+login
+exit
+
+!encrypt plain text passwords
+service password-encryption
