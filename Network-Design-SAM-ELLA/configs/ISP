@@ -1,0 +1,22 @@
+ISP
+=====================
+en
+conf t
+hostname ISP
+
+int g0/1
+ip add 10.0.0.10 255.255.255.252
+ipv6 add 2001:0DB8:9876:0004:0000:0000:0000:0002/64
+no shut
+exit
+
+!Static Routing
+!GOLR
+ip route 0.0.0.0 0.0.0.0 10.0.0.9
+
+!IPv6 portion
+ipv6 unicast-routing
+
+!IPv6 Static Routing
+!GOLR
+ipv6 route ::/0 2001:0DB8:9876:0004:0000:0000:0000:0001
