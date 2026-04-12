@@ -1,0 +1,29 @@
+ELLA-RTR
+=====================
+en
+conf t
+hostname ELLA-RTR
+
+int g0/0
+ip add 10.0.0.5 255.255.255.252
+ipv6 add 2001:0DB8:9876:0003:0000:0000:0000:0001/64
+no shut
+exit
+
+int g0/1
+ip add 192.168.0.254 255.255.255.0
+ipv6 add 2001:0DB8:9876:0002:0000:0000:0000:FFFF/64
+no shut
+exit
+
+!Static Routing
+!GOLR
+ip route 0.0.0.0 0.0.0.0 10.0.0.6
+
+!IPv6 portion
+
+ipv6 unicast-routing
+
+!IPv6 Static Routing
+!GOLR
+ipv6 route ::/0 2001:0DB8:9876:0003:0000:0000:0000:0002
