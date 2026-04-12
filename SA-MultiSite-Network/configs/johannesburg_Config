@@ -1,0 +1,41 @@
+Johannesburg LAN
+172.25.0.0 /23 (255.255.254.0)
+172.25.0.1
+172.25.1.254 Dg
+
+SW-JOH
+en
+config t 
+hostname SW-JOH
+
+line con 0
+password ADMIN
+login
+exit
+
+line vty 0 15
+password REMOTE
+login
+exit
+
+service password-encryption
+
+enable secret EXAM
+
+RTR-Johannesburg
+en
+config t
+hostname RTR-Johannesburg
+interface g0/0
+ip address 172.25.1.254 255.255.254.0
+no shutdown
+exit
+
+WAN
+interface g0/1
+ip address 10.10.10.1 255.255.255.252
+no shutdown
+exit
+
+!GOLR
+ip route 0.0.0.0 0.0.0 10.10.10.2
