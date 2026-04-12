@@ -1,0 +1,11 @@
+ELLA-SW
+=====================
+en
+conf t
+hostname ELLA-SW
+
+!configure SVI
+int vlan1
+ip address 192.168.0.100 255.255.255.0
+no shut
+exit
