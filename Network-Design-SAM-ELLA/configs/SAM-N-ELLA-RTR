@@ -1,0 +1,50 @@
+SAM-N-ELLA-RTR
+=====================
+
+en
+conf t
+hostname SAM-N-ELLA-RTR
+
+!Configure Interfaces
+int g0/1
+ip add 10.0.0.2 255.255.255.252
+ipv6 add 2001:0DB8:9876:0001:0000:0000:0000:0002/64
+no shut
+exit
+
+int g0/2
+ip add 10.0.0.9 255.255.255.252
+ipv6 add 2001:0DB8:9876:0004:0000:0000:0000:0001/64
+no shut
+exit
+
+int g0/0
+ip add 10.0.0.6 255.255.255.252
+ipv6 add 2001:0DB8:9876:0003:0000:0000:0000:0002/64
+no shut
+exit
+
+!Static Routing
+!GOLR
+ip route 0.0.0.0 0.0.0.0 10.0.0.10
+
+!Static Routes to Remote LANS
+!Path to SAM Network
+ip route 172.23.16.0 255.255.255.0 10.0.0.1
+
+!Path to ELLA Network
+ip route 192.168.0.0 255.255.255.0 10.0.0.5
+exit
+
+!IPv6 portion
+ipv6 unicast-routing
+
+!IPv6 Static Routing
+!GOLR
+ipv6 route ::/0 2001:0DB8:9876:0004:0000:0000:0000:0002
+
+!Path to SAM Network
+ipv6 route 2001:DB8:9876:0::/64 2001:0DB8:9876:0001:0000:0000:0000:0001
+
+!Path the ELLA Network
+ipv6 route 2001:DB8:9876:2::/64 2001:0DB8:9876:0003:0000:0000:0000:0001
