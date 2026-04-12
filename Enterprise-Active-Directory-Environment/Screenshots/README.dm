@@ -1,0 +1,1 @@
+This folder contains all screenshots captured during the Enterprise Active Directory Environment lab. Each screenshot provides visual evidence of the successful installation, configuration, and verification of Active Directory Domain Services (AD DS), DNS, DHCP, and related components.
