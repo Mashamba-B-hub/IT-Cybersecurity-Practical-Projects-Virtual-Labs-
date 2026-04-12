@@ -1,0 +1,17 @@
+RTR-CapeTown
+en
+config t
+hostname RTR-CapeTown
+
+WAN
+interface g0/0
+ip address 10.10.10.6 255.255.255.252
+no shutdown
+exit
+
+!GOLR
+ip route 0.0.0.0 0.0.0.0 203.15.5.46
+
+Static route
+ip route 172.25.0.0 255.255.254.0 10.10.10.5
+ip route 172.25.2.0 255.255.254.0 10.10.10.5
