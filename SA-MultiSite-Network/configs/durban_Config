@@ -1,0 +1,35 @@
+Durban
+172.25.2.0 /23 (255.255.254.0)
+172.25.2.0
+172.25.3.254 -Dg
+
+SW-DUR
+en
+config t
+hostname SW-DUR
+
+RTR-Durban
+en
+config t
+hostname RTR-Durban
+interface g0/0
+ip address 172.25.3.254 255.255.254.0
+no shutdown
+exit
+
+WAN
+interface g0/1
+ip address 10.10.10.2 255.255.255.252
+no shutdown
+exit
+
+interface g0/2
+ip address 10.10.10.5 255.255.255.252
+no shutdown
+exit
+
+!GOLR
+ip route 0.0.0.0 0.0.0.0 10.10.10.6
+
+Static route
+ip route 172.25.0.0 255.255.254.0 10.10.10.1
